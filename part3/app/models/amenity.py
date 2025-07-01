@@ -31,7 +31,7 @@ class Amenity(BaseModel):
         if not isinstance(name, str):
             raise ValueError(
                 "Amenity name must be a string")
-        if name.strip() == "":
+        if name == "":
             raise ValueError("Amenity name is required")
         if len(name) > 50:
             raise ValueError(
