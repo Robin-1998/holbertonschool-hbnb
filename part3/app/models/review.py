@@ -3,8 +3,8 @@
 """
 Module defining the Review class.
 
-This class represents a review left by a user on a place, with text 
-and a rating between 1 and 5. It strictly validates each attribute's data 
+This class represents a review left by a user on a place, with text
+and a rating between 1 and 5. It strictly validates each attribute's data
 and ensures consistency in the relationships between the user and the place.
 
 Main features:
@@ -52,8 +52,8 @@ class Review(BaseModel):
         return rating
 
     def validate_user(self, user):
-        """ 
-        Validate that the object passed as a parameter is indeed an instance 
+        """
+        Validate that the object passed as a parameter is indeed an instance
         of the User model, to ensure that only valid entities are used in the code.
         """
         from app.models.user import User
