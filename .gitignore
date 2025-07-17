@@ -172,3 +172,26 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+part3/mon_env/lib64
+part3/mon_env/pyvenv.cfg
+part3/mon_env/bin/activate
+part3/mon_env/bin/activate.csh
+part3/mon_env/bin/activate.fish
+part3/mon_env/bin/Activate.ps1
+part3/mon_env/bin/email_validator
+part3/mon_env/bin/flask
+part3/mon_env/bin/jsonschema
+part3/mon_env/bin/pip
+part3/mon_env/bin/pip3
+part3/mon_env/bin/pip3.12
+part3/mon_env/bin/python
+part3/mon_env/bin/python3
+part3/mon_env/bin/python3.12
+part3/mon_env/include/site/python3.12/greenlet/greenlet.h
+.gitignore
+.gitignore
+.gitignore
+.gitignore
+.gitignore
+.gitignore
+.gitignore
