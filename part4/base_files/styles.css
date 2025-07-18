@@ -30,3 +30,31 @@ nav a {
 main {
     padding: 2rem;
 }
+
+.place-card {
+	margin: 20px;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	background-color: #680404;
+	font-family: cursive;
+	color: #e9d7d7;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 300px;
+	min-width: 150px;
+}
+
+img {
+	width: 250px;
+}
+
+p, h3, img{
+	margin-bottom: 10px;
+}
+
+#places-list {
+	display: flex;
+	flex-flow: space-around;
+}
