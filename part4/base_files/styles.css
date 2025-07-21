@@ -16,7 +16,7 @@ body {
 }
 
 header {
-    background-color: #111111;
+    background-color: #272727;
     color: #fff;
     padding: 1rem;
 }
@@ -36,15 +36,53 @@ main {
 	padding: 10px;
 	border: 1px solid #ddd;
 	border-radius: 10px;
-	background-color: #680404;
+	background-color: #c7e0da;
 	font-family: cursive;
-	color: #e9d7d7;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	width: 300px;
 	height: 330px;
 	min-width: 150px;
+	box-shadow: 0 4px 8px #777c7a;
+}
+
+.place-info {
+	margin: 30px;
+	padding: 20px;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	font-family: cursive;
+	text-align: center;
+	background-color: #deeae4;
+	max-width: 650px;
+	height: auto;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.place-det {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+}
+
+.review-card {
+	background-color: #deeae4;
+	margin: 20px;
+	padding: 10px;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	font-family: cursive;
+}
+
+ul {
+	list-style: none;
+}
+
+#review-text {
+	margin-top: 10px;
+	width: 100%;
 }
 
 .img_card_index {
@@ -69,10 +107,37 @@ h3, h1 {
 	justify-content: center;
 }
 
-footer {
-	margin-left: 10px;
+.header_index {
+	text-align: center;
+	background-color: transparent;
+    color: #333;
 }
 
-#filter {
+hr {
+  height: 1px;
+  background-color: black; 
+  border: none; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin: 15px auto;
+  width: 60%;
+}
+
+
+footer {
+	background-color: #272727;
+	color: #fff;
+	text-align: center;
+}
+
+footer p {
+	margin-bottom: 0;
+}
+
+#filter header {
+	margin-bottom: 10px;
+}
+
+.h3_top {
 	margin-top : 10px;
+	font-style: italic;
 }
