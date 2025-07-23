@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
             await loginUser(email, password);
           });
     }
+    // APPEL À LA FONCTION QUI VÉRIFIE LE TOKEN
+    checkAuthentication();
 });
 
 // Fonction qui envoie l'email et le mot de passe au serveur pour se connecter
@@ -55,4 +57,49 @@ async function loginUser(email, password) {
         console.error('Erreur lors de la connexion :', error);
         alert('Une erreur est survenue. Veuillez réessayer plus tard.');
     }
+}
+
+// Verify user authentication
+// -----------------------------------------------
+
+function checkAuthentication() {
+    const token = getCookie('token');
+    const loginLink = document.getElementById('login-button');
+
+    if (!token) {
+        loginLink.style.display = 'block';
+    } else {
+        loginLink.style.display = 'none';
+        // Fetch places data if the user is authenticated
+        fetchPlaces(token);
+    }
+}
+function getCookie(name) {
+    // On crée une chaîne à rechercher, ex : "token="
+    const nameEQ = name + "=";
+
+// Tous les cookies sont stockés dans une seule chaîne séparée par des ;
+// On les transforme en tableau pour pouvoir les parcourir un par un
+    const cookies = document.cookie.split(';');
+
+    // On parcourt chaque cookie du tableau
+    for (let i = 0; i < cookies.length; i++) {
+        let c = cookies[i];
+
+// Certains cookies peuvent avoir un espace au début, on le supprime
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+// On enlève le premier caractère jusqu’à ce qu’il n’y ait plus d’espace
+        }
+
+        // Si ce cookie commence par "nameEQ" (par exemple "token="),
+        // alors c’est le bon cookie, on le retourne sans le nom
+        if (c.indexOf(nameEQ) === 0) {
+            return c.substring(nameEQ.length, c.length);
+            // On retourne juste la valeur, sans "token=" au début
+        }
+    }
+
+    // Si aucun cookie trouvé avec ce nom, on retourne null
+    return null;
 }
