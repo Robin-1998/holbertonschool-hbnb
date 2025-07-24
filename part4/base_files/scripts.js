@@ -74,32 +74,58 @@ function checkAuthentication() {
         fetchPlaces(token);
     }
 }
+
 function getCookie(name) {
-    // On crée une chaîne à rechercher, ex : "token="
-    const nameEQ = name + "=";
-
-// Tous les cookies sont stockés dans une seule chaîne séparée par des ;
-// On les transforme en tableau pour pouvoir les parcourir un par un
-    const cookies = document.cookie.split(';');
-
-    // On parcourt chaque cookie du tableau
-    for (let i = 0; i < cookies.length; i++) {
-        let c = cookies[i];
-
-// Certains cookies peuvent avoir un espace au début, on le supprime
-        while (c.charAt(0) === ' ') {
-            c = c.substring(1);
-// On enlève le premier caractère jusqu’à ce qu’il n’y ait plus d’espace
-        }
-
-        // Si ce cookie commence par "nameEQ" (par exemple "token="),
-        // alors c’est le bon cookie, on le retourne sans le nom
-        if (c.indexOf(nameEQ) === 0) {
-            return c.substring(nameEQ.length, c.length);
-            // On retourne juste la valeur, sans "token=" au début
-        }
-    }
-
-    // Si aucun cookie trouvé avec ce nom, on retourne null
+     const cookies = document.cookie.split(';');
+     for (let cookie of cookies) {
+          cookie = cookie.trim();
+          if (cookie.startsWith(name + '=')) {
+             return cookie.substring(name.length + 1);
+          }
+     }
     return null;
+}
+document.addEventListener('DOMContentLoaded', () => {
+    checkAuthentication(); // Appel de la vérification d'authentification à chaque chargement de page
+});
+
+// Retrieve location data:
+// -----------------------------------------------
+
+async function fetchPlaces(token) {
+    try {
+        const response = await fetch('http://localhost:5000/api/v1/places/', { // Remplacez par l’URL réelle
+            method: 'GET',    
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}` // Inclusion du jeton JWT
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP : ${response.status}`);
+        }
+
+        const data = await response.json(); // Parse la réponse JSON
+        displayPlaces(data); // Appel de la fonction pour afficher les lieux
+    } catch (error) {
+        console.error('Erreur lors de la récupération des lieux :', error);
+    }
+}
+
+
+function displayPlaces(places) {
+    const listContainer = document.querySelector('.place-det');
+    listContainer.innerHTML = ''; // On vide la liste
+
+    places.forEach(place => {
+        const article = document.createElement('article');
+
+        const title = document.createElement('h3')
+        title.className = 'h3_top';
+        title.innerHTML = `<strong>${place.title}</strong>`;
+        article.appendChild(title);
+
+        listContainer.appendChild(article);
+    });
 }

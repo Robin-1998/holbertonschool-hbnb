@@ -34,8 +34,17 @@ def create_app(config_class=config.DevelopmentConfig):
     """
 
     app = Flask(__name__)
-    CORS(app)
+    app.url_map.strict_slashes = False
+
+    
+    CORS(app,
+        origins=["http://localhost:8000"],
+        supports_credentials=True,
+        methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+        allow_headers=["Authorization", "Content-Type"])
+    # permet de pouvoir utiliser plusieurs le CORS avec plusieurs route
     app.config.from_object(config_class)
+    
 
     jwt.init_app(app)
     bcrypt.init_app(app)
