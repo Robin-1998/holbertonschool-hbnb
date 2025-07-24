@@ -115,17 +115,45 @@ async function fetchPlaces(token) {
 
 
 function displayPlaces(places) {
-    const listContainer = document.querySelector('.place-det');
+    const listContainer = document.getElementById('places-list');
     listContainer.innerHTML = ''; // On vide la liste
 
-    places.forEach(place => {
+    places.forEach((place, index) => {
         const article = document.createElement('article');
+        article.className = 'place-card';
+
+        const imagePaths = {
+          "Minas Tirith": 'images/minas_tirith.jpg',
+          "Gouffre de Helm": 'images/gouffre_helm.jpg'
+        }
+
+        const img = document.createElement('img')
+        img.src = imagePaths[place.title] || 'images/default.jpg';
+        img.alt = 'Photo of a villa';
+        img.className = 'img_card_index';
+        article.appendChild(img);
 
         const title = document.createElement('h3')
-        title.className = 'h3_top';
-        title.innerHTML = `<strong>${place.title}</strong>`;
+        title.textContent = place.title;
         article.appendChild(title);
+
+        const paragraphe = document.createElement('p')
+        paragraphe.textContent = place.description
+        article.appendChild(paragraphe)
+
+        const price = document.createElement('p')
+        price.textContent = `${place.price} € per night`;
+        article.appendChild(price);
+
+        const latitude = document.createElement('p')
+        latitude.textContent = `latitude: ${place.latitude}`;
+        article.appendChild(latitude)
+
+        const longitude = document.createElement('p')
+        longitude.textContent = `longitude: ${place.longitude}`;
+        article.appendChild(longitude)
 
         listContainer.appendChild(article);
     });
 }
+
