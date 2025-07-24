@@ -121,6 +121,7 @@ function displayPlaces(places) {
     places.forEach((place, index) => {
         const article = document.createElement('article');
         article.className = 'place-card';
+        article.setAttribute('data-price', place.price);
 
         const imagePaths = {
           "Minas Tirith": 'images/minas_tirith.jpg',
@@ -139,21 +140,55 @@ function displayPlaces(places) {
 
         const paragraphe = document.createElement('p')
         paragraphe.textContent = place.description
-        article.appendChild(paragraphe)
+        article.appendChild(paragraphe);
 
         const price = document.createElement('p')
+        price.className = 'leprix';
         price.textContent = `${place.price} € per night`;
         article.appendChild(price);
 
         const latitude = document.createElement('p')
-        latitude.textContent = `latitude: ${place.latitude}`;
-        article.appendChild(latitude)
+        latitude.textContent = `latitude: ${place.latitude}°`;
+        article.appendChild(latitude);
 
         const longitude = document.createElement('p')
-        longitude.textContent = `longitude: ${place.longitude}`;
-        article.appendChild(longitude)
+        longitude.textContent = `longitude: ${place.longitude}°`;
+        article.appendChild(longitude);
+
+        const legrosbouton = document.createElement('button')
+        legrosbouton.textContent = `View Details`;
+        article.appendChild(legrosbouton);
+
 
         listContainer.appendChild(article);
     });
 }
 
+const priceFilter = document.getElementById('price-filter');
+
+['all', 10, 50, 100].forEach(value => {
+    const option = document.createElement('option');
+    option.value = value;
+    option.textContent = value === 'all' ? 'Tous' : value;
+    priceFilter.appendChild(option);
+});
+
+// on ajoute un écouteur d'évènement à la liste déroulante avec l'id price-filter
+// change se déclenche quand l'utilisateur choisit une nouvelle valeur dans la liste (10, 50, 100 ou "Tous")
+document.getElementById('price-filter').addEventListener('change', (event) => {
+    const selectedPrice = event.target.value;
+    // récupère la valeur séléctionné par l'utilisateur
+    const places = document.querySelectorAll('.place-card');
+
+    places.forEach(place => {
+        const priceText = place.getElementsByClassName('leprix')[0];
+        const raw = priceText.textContent;
+        const price = parseFloat(raw);
+
+        if (selectedPrice === 'all' || price <= parseFloat(selectedPrice)) {
+            place.style.display = '';
+        } else {
+            place.style.display = 'none';
+        }
+    });
+});
