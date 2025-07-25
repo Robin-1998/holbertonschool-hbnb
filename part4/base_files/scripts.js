@@ -1,3 +1,8 @@
+//----------------------------- TASK1 --------------------------------------
+
+//----------------------------------------------------------------------
+// Configurer l'écouteur d'événements pour le formulaire de connexion :
+// ---------------------------------------------------------------------
 document.addEventListener('DOMContentLoaded', () => {
 // on attend qye tiyt ke DOM (le contenu html de la page) soit chargé avant
 // d'éxécuter le code à l'intérieur
@@ -23,6 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // APPEL À LA FONCTION QUI VÉRIFIE LE TOKEN
     checkAuthentication();
 });
+
+// ---------------------------------------------------------------------
+// Faire une requête AJAX à l'API + Gérer la réponse de l'API
+// ---------------------------------------------------------------------
 
 // Fonction qui envoie l'email et le mot de passe au serveur pour se connecter
 async function loginUser(email, password) {
@@ -59,8 +68,11 @@ async function loginUser(email, password) {
     }
 }
 
+//----------------------------- TASK2 --------------------------------------
+
+//----------------------------------------------------------------------
 // Verify user authentication
-// -----------------------------------------------
+// ---------------------------------------------------------------------
 
 function checkAuthentication() {
     const token = getCookie('token');
@@ -70,7 +82,6 @@ function checkAuthentication() {
         loginLink.style.display = 'block';
     } else {
         loginLink.style.display = 'none';
-        // Fetch places data if the user is authenticated
         fetchPlaces(token);
     }
 }
@@ -89,8 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
     checkAuthentication(); // Appel de la vérification d'authentification à chaque chargement de page
 });
 
-// Retrieve location data:
-// -----------------------------------------------
+// ---------------------------------------------------------------
+// Récupérer les données des lieux :
+// ---------------------------------------------------------------
 
 async function fetchPlaces(token) {
     try {
@@ -113,6 +125,9 @@ async function fetchPlaces(token) {
     }
 }
 
+// ----------------------------------------------------------------------
+// Liste des lieux à peupler
+// ----------------------------------------------------------------------
 
 function displayPlaces(places) {
     const listContainer = document.getElementById('places-list');
@@ -157,12 +172,23 @@ function displayPlaces(places) {
 
         const legrosbouton = document.createElement('button')
         legrosbouton.textContent = `View Details`;
+        legrosbouton.setAttribute('data-id', place.id);
+        
         article.appendChild(legrosbouton);
+
+        legrosbouton.addEventListener('click', () => {
+          const placeId = legrosbouton.getAttribute('data-id');
+          window.location.href = `place.html?id=${placeId}`;
+        })
 
 
         listContainer.appendChild(article);
     });
 }
+
+// ----------------------------------------------------------------------
+// Implémenter le filtrage côté client
+// ----------------------------------------------------------------------
 
 const priceFilter = document.getElementById('price-filter');
 
