@@ -166,10 +166,20 @@ function displayPlaces(places) {
 
 const priceFilter = document.getElementById('price-filter');
 
-['all', 10, 50, 100].forEach(value => {
+// On crée une liste d'options de filtre de prix : "Tous", 10, 50, 100
+const prices = ['all', 10, 50, 100];
+
+  prices.forEach(price => {
     const option = document.createElement('option');
-    option.value = value;
-    option.textContent = value === 'all' ? 'Tous' : value;
+    // On définit sa valeur (ce qui sera récupéré lors de la séléction)
+    option.value = price;
+    // Si la valeur est "all", on affiche "Tous" dans le texte de l'option
+    if (price === 'all') {
+      option.textContent = 'all';
+    } else {
+    // Sinon, on affiche directement le nombre (ex: 10, 50, 100)
+      option.textContent = price;
+    }
     priceFilter.appendChild(option);
 });
 
@@ -177,16 +187,25 @@ const priceFilter = document.getElementById('price-filter');
 // change se déclenche quand l'utilisateur choisit une nouvelle valeur dans la liste (10, 50, 100 ou "Tous")
 document.getElementById('price-filter').addEventListener('change', (event) => {
     const selectedPrice = event.target.value;
-    // récupère la valeur séléctionné par l'utilisateur
+    // on récupère toutes les cartes de lieu qui sont affichés
     const places = document.querySelectorAll('.place-card');
 
+    // et pour chaque lieu
     places.forEach(place => {
+      // on récupère l'élément contenant la classe leprix
         const priceText = place.getElementsByClassName('leprix')[0];
+        // on récupère ensuite le prix qu'on stocke dans une variable.
+        // Par exemple 100
         const raw = priceText.textContent;
+        // On extrait le nombre et on le convertit en nombre flottant en enlevant le signe € ou autre caractère
         const price = parseFloat(raw);
 
+        // Si tous est séléctionné OU que le prix est inférieur ou égal à celui choisi
         if (selectedPrice === 'all' || price <= parseFloat(selectedPrice)) {
+        // si tout est présent ou si le prix est inférieur ou égal par exemple à 100
+        // alors on retourne les carte correspondante à l'aide de css
             place.style.display = '';
+        // mais à l'inverse si ce le prix n'est pas bon alors on affiche rien
         } else {
             place.style.display = 'none';
         }
