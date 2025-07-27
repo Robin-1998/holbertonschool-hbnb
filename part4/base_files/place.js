@@ -25,14 +25,18 @@ function getPlaceIdFromURL() {
 function checkAuthentication() {
     const token = getCookie('token');
     const addReviewSection = document.getElementById('add-review');
+    const loginLink = document.getElementById('login-button');
     const placeId = getPlaceIdFromURL();
 
-    if (!token) {
-        addReviewSection.style.display = 'none';
-    } else {
-        addReviewSection.style.display = 'block';
-        // Store the token for later use
+    if (token) {
+        // Utilisateur connecté : afficher le formulaire + cacher "login"
+        if (addReviewSection) addReviewSection.style.display = 'block';
+        if (loginLink) loginLink.style.display = 'none';
         fetchPlaceDetails(token, placeId);
+    } else {
+        // Utilisateur non connecté : cacher le formulaire + afficher "login"
+        if (addReviewSection) addReviewSection.style.display = 'none';
+        if (loginLink) loginLink.style.display = 'block';
     }
 }
 
@@ -104,15 +108,49 @@ function displayPlaceDetails(place,) {
       const titre_description = document.createElement('p')
       titre_description.textContent= 'Description: '
       secund_div.appendChild(titre_description)
+      titre_description.style.fontWeight = 'bold';
       
       const description = document.createElement('p')
       description.textContent = place.description
       secund_div.appendChild(description)
 
-      const mail = document.createElement('p')
-      mail.textContent = `Mail: ${place.first_name}`;
-      secund_div.appendChild(mail)
+      if (place.owner) {
+        const email = document.createElement('p');
+        email.textContent = `Email: ${place.owner.email}`;
+        secund_div.appendChild(email);
 
+        const host = document.createElement('p');
+        host.textContent = `Host: ${place.owner.first_name} ${place.owner.last_name}`;
+        secund_div.appendChild(host);
+      } else {
+          const noOwner = document.createElement('p');
+          noOwner.textContent = "Owner info not available.";
+          secund_div.appendChild(noOwner);
+      }
+
+      const price = document.createElement('p')
+      price.textContent = `Price per night: ${place.price} €`;
+      secund_div.appendChild(price)
+
+      const titre_amenities = document.createElement('p')
+      titre_amenities.textContent = 'Amenities: '
+      secund_div.appendChild(titre_amenities)
+
+      const amenities = document.createElement('p')
+      amenities.textContent = place.name
+      secund_div.appendChild(amenities)
+
+    if (Array.isArray(place.amenities) && place.amenities.length > 0) {
+        place.amenities.forEach(amenity => {
+            const amenityItem = document.createElement('p');
+            amenityItem.textContent = `- ${amenity.name}`;
+            secund_div.appendChild(amenityItem);
+        });
+    } else {
+        const noAmenity = document.createElement('p');
+        noAmenity.textContent = 'No amenities listed.';
+        secund_div.appendChild(noAmenity);
+    }
 
       listContainer.appendChild(header);
       listContainer.appendChild(div);
