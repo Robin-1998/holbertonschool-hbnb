@@ -178,7 +178,7 @@ function displayPlaces(places) {
 
         legrosbouton.addEventListener('click', () => {
           const placeId = legrosbouton.getAttribute('data-id');
-          window.location.href = `place.html?id=${placeId}`;
+          window.location.href = `place.html?placeId=${placeId}`;
         })
 
 
