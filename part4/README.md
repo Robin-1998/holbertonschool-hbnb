@@ -67,9 +67,79 @@ Clear separation of concerns across routes, models, and controllers.
 
 ---
 
+## How to Run the Application with the communication front-end/back-end
+
+1. run server back-end in the racine of the part4
+	```bash
+   python3 run.py
+   ```
+
+2. run server front-end int the repository base_files
+	```bash
+   python3 -m http.server 8000
+   ```
+
+3. Welcome to http://localhost:8000/index.html
+	mdp administrator : admin1234
+	mail administrator : admin@hbnb.io
+
 ## Purpose of Each Directory and File
 
 ![Structure du projet](structure.png)
+
+app/                            # Contains the main application code
+├── __init__.py                 # App constructor and factory function
+├── api/                        # Contains API endpoints (by version)
+│   ├── __init__.py             # API package initializer
+│   └── v1/                     # Version 1 of the API endpoints
+│       ├── __init__.py         # API v1 package initializer
+│       ├── admin.py            # Admin-related API routes
+│       ├── auth.py             # Auth-related API routes
+│       ├── users.py            # User-related API routes
+│       ├── places.py           # Place-related API routes
+│       ├── reviews.py          # Review-related API routes
+│       └── amenities.py        # Amenity-related API routes
+├── database/                   # Database-related files
+│   └── schema.sql              # SQL schema to initialize the database
+├── models/                     # Business logic classes and ORM models
+│   ├── __init__.py             # Models package initializer
+│   ├── BaseModel.py            # Base model with shared attributes/methods
+│   ├── association_tables.py   # Association tables for many-to-many relationships
+│   ├── user.py                 # User model definition
+│   ├── place.py                # Place model definition
+│   ├── review.py               # Review model definition
+│   └── amenity.py              # Amenity model definition
+├── services/                   # Facade pattern for layer communication
+│   ├── __init__.py             # Services package initializer
+│   └── facade.py               # Facade class implementing business logic orchestration
+├── persistence/                # In-memory repositories
+│   ├── __init__.py             # Persistence package initializer
+│   ├── repository.py           # Generic repository pattern implementation
+│   └── user_repository.py      # User-specific repository implementation
+├── tests/                      # Unit and integration tests and script test Postman
+│   ├── script_postman.txt      # Postman test script for API endpoint testing
+│   ├── test_amenities.py       # Unit tests for amenities
+│   ├── test_places.py          # Unit tests for places
+│   ├── test_reviews.py         # Unit tests for reviews
+│   ├── test_users.py           # Unit tests for users
+│   └── TEST.md                 # Documentation for the tests and testing procedure
+instance/                       # Local instance folder, contains files specific to the machine
+├── development.db              # SQLite database file created when running the app
+base_files					    # Front-end code
+├── images						# contains all image utilisated in the web site
+├── index.html					# The main page html
+├── login.html					# The page where the user have the possibility to connect
+├── place.html					# The page where the place and the review of the place is display. Possibility to add a review
+├── place.js					#
+├── scripts.js
+├── user.js
+├── styles.css
+__init__.py                     # Root package initializer
+run.py                          # Entry point of the Flask app
+config.py                       # Used to configure environment variables and application settings
+requirements.txt                # Lists all Python packages required for the project
+README.md                       # Project overview and documentation file
+run-tests.py                    # Script to launch the test suite
 
 
 ## API Endpoints
@@ -196,5 +266,5 @@ All our tests were performed using Postman and Swagger, covering all CRUD operat
 
 ## Author
 
-👩‍💻 Thérèse-Marie Lefoulon & Robin David
+👩‍💻 Robin David
 🚀 Full-Stack Web Developer in training at Holberton School Laval — project-based and peer-learning curriculum
