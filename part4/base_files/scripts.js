@@ -193,7 +193,9 @@ function displayPlaces(places) {
 const priceFilter = document.getElementById('price-filter');
 
 // On crée une liste d'options de filtre de prix : "Tous", 10, 50, 100
-const prices = ['all', 10, 50, 100];
+if (priceFilter) {
+  const prices = ['all', 10, 50, 100];
+
 
   prices.forEach(price => {
     const option = document.createElement('option');
@@ -208,6 +210,7 @@ const prices = ['all', 10, 50, 100];
     }
     priceFilter.appendChild(option);
 });
+}
 
 // on ajoute un écouteur d'évènement à la liste déroulante avec l'id price-filter
 // change se déclenche quand l'utilisateur choisit une nouvelle valeur dans la liste (10, 50, 100 ou "Tous")
