@@ -6,7 +6,12 @@
 // -----------------------------------------------------------
 
 function getPlaceIdFromURL() {
-  const placeID = new URLSearchParams(window.location.search).get('id');
+  const params = new URLSearchParams(window.location.search);
+  const placeID = params.get('placeId') || params.get('id');
+  if (!placeID) {
+    alert('Aucun ID de lieu fourni dans l’URL.');
+    return;
+  }
   return placeID;
   // on récupère juste la valeur de l'id car window.location.search seul donne
   // tout le contenu de l'id ex (?id=123&foo=bar)
