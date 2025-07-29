@@ -155,4 +155,45 @@ function displayPlaceDetails(place,) {
       listContainer.appendChild(header);
       listContainer.appendChild(div);
       listContainer.appendChild(secund_div)
+
+    const reviewContainer = document.getElementById('reviews');
+
+    // Vide l'ancienne liste (attention à ne pas supprimer le header)
+    // Ici on garde le header et on enlève les anciennes review-cards
+    while (reviewContainer.children.length > 1) {
+      reviewContainer.removeChild(reviewContainer.lastChild);
+    }
+
+    if (Array.isArray(place.reviews) && place.reviews.length > 0) {
+      place.reviews.forEach(review => {
+        const reviewCard = document.createElement('div');
+        reviewCard.className = 'review-card';
+
+        // Texte de la review
+        const reviewText = document.createElement('p');
+        reviewText.textContent = review.text;
+
+        // Auteur de la review
+        if (review.user) {
+          const reviewAuthor = document.createElement('p');
+          reviewAuthor.textContent = `${user.first_name} ${user.last_name}`;
+          reviewCard.appendChild(reviewAuthor);
+        }
+
+        // Note / étoiles (supposons qu'on ait un champ rating de 1 à 5)
+        const reviewRating = document.createElement('p');
+        const starsCount = review.rating || 0;
+        const stars = '★'.repeat(starsCount) + '☆'.repeat(5 - starsCount);
+        reviewRating.innerHTML = `<strong>${stars}</strong>`;
+
+        reviewCard.appendChild(reviewText);
+        reviewCard.appendChild(reviewRating);
+
+        reviewContainer.appendChild(reviewCard);
+      });
+    } else {
+      const noReviewMsg = document.createElement('p');
+      noReviewMsg.textContent = 'No reviews yet.';
+      reviewContainer.appendChild(noReviewMsg);
+    }
     };
