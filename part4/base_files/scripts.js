@@ -140,7 +140,14 @@ function displayPlaces(places) {
 
         const imagePaths = {
           "Minas Tirith": 'images/minas_tirith.jpg',
-          "Gouffre de Helm": 'images/gouffre_helm.jpg'
+          "Gouffre de Helm": 'images/gouffre_helm.jpg',
+          "Small villa with character": 'images/place_01.jpg',
+          "Building with a view of a putrid swamp in Mordor": 'images/place_02.jpg',
+          "The pit to the madwomen": 'images/place_04.jpg',
+          "The house with eyes": 'images/place_03.jpg',
+          "Dungeon of the Three mosquito nets": 'images/place_05.jpg',
+          "Mage tower": 'images/place_06.jpg',
+          "Appartment in the megabuilding": 'images/place_07.jpg'
         }
 
         const img = document.createElement('img')
