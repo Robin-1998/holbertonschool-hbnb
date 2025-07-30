@@ -209,7 +209,7 @@ erDiagram
 ## Simple Web Client
 
 ### 1. User login through login.html for a user registered in the database
-
+<img src="base_files/images/login_exemple.png" alt="Presentation of login.html" width="300"/>
 ![Presentation of login.html](base_files/images/login_exemple.png)
 
 On the login.html page, we use an email address and password from the database to log in and be redirected to the main page: index.html. if the connexion success, the nav with the text "login" disappear in all pages.
