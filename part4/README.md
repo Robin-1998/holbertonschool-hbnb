@@ -58,7 +58,7 @@ Clear separation of concerns across routes, models, and controllers.
 4. Leave the server:  
    Press `CTRL+C` to exit the server. When you launch the server, it should create an `instance` folder with the database file `development.db`.
 
-5. Add the SQL script to the database:  
+5. Add the SQL script to the database:
    ```bash
    sqlite3 instance/development.db < app/database/schema.sql
    ```
@@ -86,60 +86,6 @@ Clear separation of concerns across routes, models, and controllers.
 ## Purpose of Each Directory and File
 
 ![Structure du projet](structure.png)
-
-app/                            # Contains the main application code
-├── __init__.py                 # App constructor and factory function
-├── api/                        # Contains API endpoints (by version)
-│   ├── __init__.py             # API package initializer
-│   └── v1/                     # Version 1 of the API endpoints
-│       ├── __init__.py         # API v1 package initializer
-│       ├── admin.py            # Admin-related API routes
-│       ├── auth.py             # Auth-related API routes
-│       ├── users.py            # User-related API routes
-│       ├── places.py           # Place-related API routes
-│       ├── reviews.py          # Review-related API routes
-│       └── amenities.py        # Amenity-related API routes
-├── database/                   # Database-related files
-│   └── schema.sql              # SQL schema to initialize the database
-├── models/                     # Business logic classes and ORM models
-│   ├── __init__.py             # Models package initializer
-│   ├── BaseModel.py            # Base model with shared attributes/methods
-│   ├── association_tables.py   # Association tables for many-to-many relationships
-│   ├── user.py                 # User model definition
-│   ├── place.py                # Place model definition
-│   ├── review.py               # Review model definition
-│   └── amenity.py              # Amenity model definition
-├── services/                   # Facade pattern for layer communication
-│   ├── __init__.py             # Services package initializer
-│   └── facade.py               # Facade class implementing business logic orchestration
-├── persistence/                # In-memory repositories
-│   ├── __init__.py             # Persistence package initializer
-│   ├── repository.py           # Generic repository pattern implementation
-│   └── user_repository.py      # User-specific repository implementation
-├── tests/                      # Unit and integration tests and script test Postman
-│   ├── script_postman.txt      # Postman test script for API endpoint testing
-│   ├── test_amenities.py       # Unit tests for amenities
-│   ├── test_places.py          # Unit tests for places
-│   ├── test_reviews.py         # Unit tests for reviews
-│   ├── test_users.py           # Unit tests for users
-│   └── TEST.md                 # Documentation for the tests and testing procedure
-instance/                       # Local instance folder, contains files specific to the machine
-├── development.db              # SQLite database file created when running the app
-base_files					    # Front-end code
-├── images						# contains all image utilisated in the web site
-├── index.html					# The main page html
-├── login.html					# The page where the user have the possibility to connect
-├── place.html					# The page where the place and the review of the place is display. Possibility to add a review
-├── place.js					#
-├── scripts.js
-├── user.js
-├── styles.css
-__init__.py                     # Root package initializer
-run.py                          # Entry point of the Flask app
-config.py                       # Used to configure environment variables and application settings
-requirements.txt                # Lists all Python packages required for the project
-README.md                       # Project overview and documentation file
-run-tests.py                    # Script to launch the test suite
 
 
 ## API Endpoints
@@ -259,6 +205,20 @@ erDiagram
     PLACES ||--o{ USER_PLACE_RESERVATION : booked_for
     USERS ||--o{ USER_PLACE_RESERVATION : makes
 ```
+
+## Simple Web Client
+
+### 1. User login through login.html for a user registered in the database
+
+On the login.html page, we use an email address and password from the database to log in and be redirected to the main page: index.html.
+
+### 2. Presentation of all known locations in the database
+
+On the index.html page, if the user is logged in, they will be able to see the list of locations stored in the database with the option to view details via the buttons on each map. If the user is not logged in, they will not see any locations displayed. There is also the option to choose a maximum price based on values between 10, 50, 100, or to display the entire range (which is the default setting).
+
+### 3. Details of a place and and there is the possibility to view and add a review
+
+On the place.html, if the user requests details about one of the different locations, they will be taken to this page where they will see complete information about the location. They will then be able to see each review that another user has given and can also add one (note that they can only post one review and that the owner of the location cannot leave a review).
 
 ## Tests
 
