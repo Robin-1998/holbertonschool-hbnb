@@ -53,7 +53,35 @@ CREATE TABLE IF NOT EXISTS place_amenity (
 
 -- INSERT for places_amenity Table
 INSERT INTO place_amenity (place_id, amenity_id)
-VALUES ('c1a4b9de-7fcb-4df4-89c7-9a7f62c5f3b2', 'ec8cc2a0-a295-4a8f-b13a-b7f6c04a35f1');
+VALUES 
+	('c1a4b9de-7fcb-4df4-89c7-9a7f62c5f3b2', 'ec8cc2a0-a295-4a8f-b13a-b7f6c04a35f1'),
+	('461c8021-3920-4ef4-9002-5600a4bf2a9f', 'ec8cc2a0-a295-4a8f-b13a-b7f6c04a35f1'),
+	('461c8021-3920-4ef4-9002-5600a4bf2a9f', '9c2b73f1-0de4-4b83-95d5-5f2e6d7fc6e8'),
+	('461c8021-3920-4ef4-9002-5600a4bf2a9f', '4fa7b2e6-1db1-4a29-b8a0-7156543cdb69'),
+	('461c8021-3920-4ef4-9002-5600a4bf2a9f', 'd81f3429-3c8a-4c31-981e-9a07a1b10d47'),
+	('7ee30d8d-33f5-4ac2-b344-1daff39e46fa', 'b6f3d3c2-7125-4f59-a3a6-1b8f6a1e9ef4'),
+	('7ee30d8d-33f5-4ac2-b344-1daff39e46fa', 'e2a6c7d4-9f0e-4724-bc80-97b2d28d9050'),
+	('7ee30d8d-33f5-4ac2-b344-1daff39e46fa', '5de2fbc1-c02f-43d3-9732-8a90b1f8ec66'),
+	('ce3b57ca-fc49-4cec-b21c-f3daf5280b9e', '64adf0cd-0e00-4f53-85b3-26744c8e52e2'),
+	('ce3b57ca-fc49-4cec-b21c-f3daf5280b9e', 'ec8cc2a0-a295-4a8f-b13a-b7f6c04a35f1'),
+	('ce3b57ca-fc49-4cec-b21c-f3daf5280b9e', '51234158-fb59-476e-b25f-2fdaef4c32a5'),
+	('ce3b57ca-fc49-4cec-b21c-f3daf5280b9e', '93e226e6-a1b6-4363-8987-a1061e9ea7e9'),
+	('ce3b57ca-fc49-4cec-b21c-f3daf5280b9e', '0a2e54ca-834a-4f8a-8490-86408c5f923f'),
+	('a1780f45-7d32-417e-a536-337f37de5424', 'a7c5e81b-3d4e-4c7a-bb71-2d654fd739be'),
+	('a1780f45-7d32-417e-a536-337f37de5424', '3f9b2c6d-7a51-4e80-b9d3-2cfd4e7aef15'),
+	('a1780f45-7d32-417e-a536-337f37de5424', 'c4e8a9f2-63b7-4d91-9b3c-5a7f0248e2d1'),
+	('a1780f45-7d32-417e-a536-337f37de5424', 'b8ed61fd-e9cd-4c33-81e7-19cee06a3337'),
+	('17bc2dbc-6b4d-4d2c-a7b3-8cd5ceff774d', 'ec8cc2a0-a295-4a8f-b13a-b7f6c04a35f1'),
+	('17bc2dbc-6b4d-4d2c-a7b3-8cd5ceff774d', '3a1b4451-db0d-4e80-a682-c8d462f44a4d'),
+	('17bc2dbc-6b4d-4d2c-a7b3-8cd5ceff774d', 'caa00a8e-1536-4629-90d5-0bb86a252cef'),
+	('17bc2dbc-6b4d-4d2c-a7b3-8cd5ceff774d', '0a2e54ca-834a-4f8a-8490-86408c5f923f'),
+	('15ed065a-a0a6-4335-98ec-828643bb1def', '9d768f24-baba-44eb-947c-7fbce971dc93'),
+	('15ed065a-a0a6-4335-98ec-828643bb1def', '02eb5127-91ba-4daf-b2f0-42fd4d50fe0e'),
+	('b22e9936-2f7c-4516-9a71-f588acc5c582', '397aede6-977e-4e56-bdc6-f55c072f84b0'),
+	('b22e9936-2f7c-4516-9a71-f588acc5c582', '56f6b364-0dea-4b9a-ac5b-d47384a50668'),
+	('b22e9936-2f7c-4516-9a71-f588acc5c582', '74bd5cb7-8291-4558-91aa-d0d7543a342c'),
+	('b22e9936-2f7c-4516-9a71-f588acc5c582', 'ec8cc2a0-a295-4a8f-b13a-b7f6c04a35f1');
+
 
 -- INSERT for users Table
 -- users de base (Administrateur avec mot de passe hacé génréré avec https://bcrypt-generator.com)
@@ -90,21 +118,87 @@ VALUES(
 	datetime('now')
 );
 
+INSERT INTO users (id, first_name, last_name, email, password, is_admin, created_at)
+VALUES(
+	'a3f82e18-4b94-4ed6-b7c6-8a35f3edbb01',
+	'Ronvid',
+	'du-petit-marais',
+	'ronvid@gmail.com',
+	'$2a$12$bKT/4WgcFOWcS8PSBOA1gOvZpphNkCmtMKxgb/lSf6UGDoQjQ0E0y',
+	-- mdp : myrtille
+	FALSE,
+	datetime('now')
+);
+
+INSERT INTO users (id, first_name, last_name, email, password, is_admin, created_at)
+VALUES(
+	'f3cba417-98d2-4c29-8eb3-7b8f9cb4e8d1',
+	'Rob',
+	'Gondor',
+	'gondor@gmail.com',
+	'$2a$12$sAS.6qE0cKgI8lb2jtvS6u/i5N82pLYQ8ACMUAP9IR/HzxZlqRhIG',
+	-- mdp : city
+	TRUE,
+	datetime('now')
+);
+
+INSERT INTO users (id, first_name, last_name, email, password, is_admin, created_at)
+VALUES(
+	'96c6cf13-0f8a-4b7d-a283-d453fe7922a0',
+	'Renato',
+	'Baldi',
+	'moumoune@gmail.com',
+	'$2a$12$U63R2HDDqeLZ08lu0RD2m.qruxpZJBTU4lEK2ar9aoJBby47ASwSG',
+	-- mdp : minou
+	FALSE,
+	datetime('now')
+);
+
+INSERT INTO users (id, first_name, last_name, email, password, is_admin, created_at)
+VALUES(
+	'f30c0e51-36a8-4796-a3e7-108a2bd72504',
+	'Boromir',
+	'Cor',
+	'les_trois_moustiquaires@gmail.com<',
+	'$2a$12$nSa.UV20esa5XyaPzjCuduxKwSvUfxfxvzyhOYaMMPvZ3HtJyp63S',
+	-- mdp : watashiwa
+	TRUE,
+	datetime('now')
+);
 
 -- INSERT for amenities Table
 INSERT INTO amenities (id, name, created_at) VALUES 
-	('ec8cc2a0-a295-4a8f-b13a-b7f6c04a35f1', 'Wi-Fi', datetime('now')), 
-	('64adf0cd-0e00-4f53-85b3-26744c8e52e2', 'Piscine', datetime('now')), 
+	('ec8cc2a0-a295-4a8f-b13a-b7f6c04a35f1', 'Wi-Fi', datetime('now')),
+	('64adf0cd-0e00-4f53-85b3-26744c8e52e2', 'Swimming pool', datetime('now')),
 	('51234158-fb59-476e-b25f-2fdaef4c32a5', 'Climatisation', datetime('now')),
 	('2f3b62b8-c01d-4a6e-9fe2-c3c1d6f601d7', 'Vieille Télévision à changer', datetime('now')),
-	('8b0a9e13-4de6-41f4-86bb-cde4d68b6e6b', 'Cafetière cassé à supprimer', datetime('now'));
+	('8b0a9e13-4de6-41f4-86bb-cde4d68b6e6b', 'Cafetière cassé à supprimer', datetime('now')),
+	('9c2b73f1-0de4-4b83-95d5-5f2e6d7fc6e8', 'Fully equipped bathroom', datetime('now')),
+	('4fa7b2e6-1db1-4a29-b8a0-7156543cdb69', 'Home cinema', datetime('now')),
+	('d81f3429-3c8a-4c31-981e-9a07a1b10d47', 'Jacuzzi on the premises', datetime('now')),
+	('b6f3d3c2-7125-4f59-a3a6-1b8f6a1e9ef4', 'Dilapidated barbecue', datetime('now')),
+	('e2a6c7d4-9f0e-4724-bc80-97b2d28d9050', 'Chair made from human bones', datetime('now')),
+	('5de2fbc1-c02f-43d3-9732-8a90b1f8ec66', 'Natural heating with volcano nearby', datetime('now')),
+	('a7c5e81b-3d4e-4c7a-bb71-2d654fd739be', 'Barbecue', datetime('now')),
+	('3f9b2c6d-7a51-4e80-b9d3-2cfd4e7aef15', 'Butcher-style kitchen', datetime('now')),
+	('c4e8a9f2-63b7-4d91-9b3c-5a7f0248e2d1', 'Free parking (beware of sharp objects)', datetime('now')),
+	('b8ed61fd-e9cd-4c33-81e7-19cee06a3337', 'Only dog friendly', datetime('now')),
+	('93e226e6-a1b6-4363-8987-a1061e9ea7e9', 'Pet friendly', datetime('now')),
+	('0a2e54ca-834a-4f8a-8490-86408c5f923f', 'An arrival organised by Moumoune at the accommodation', datetime('now')),
+	('caa00a8e-1536-4629-90d5-0bb86a252cef', 'Paid parking', datetime('now')),
+	('3a1b4451-db0d-4e80-a682-c8d462f44a4d', 'Arena for the behior', datetime('now')),
+	('9d768f24-baba-44eb-947c-7fbce971dc93', 'Library', datetime('now')),
+	('02eb5127-91ba-4daf-b2f0-42fd4d50fe0e', 'golem servant', datetime('now')),
+	('397aede6-977e-4e56-bdc6-f55c072f84b0', 'fully equipped shower with three shells', datetime('now')),
+	('56f6b364-0dea-4b9a-ac5b-d47384a50668', 'secret room for storing weapons', datetime('now')),
+	('74bd5cb7-8291-4558-91aa-d0d7543a342c', 'robot maintenance included', datetime('now'));
 
 -- INSERT for places Table
 INSERT INTO places (id, title, description, _price, _latitude, _longitude, owner_id, created_at)
 VALUES(
 	'c1a4b9de-7fcb-4df4-89c7-9a7f62c5f3b2',
 	'Minas Tirith',
-	'La cité blanche accueille seulement les fidèles du Gondor',
+	'The White City welcomes only the faithful of Gondor.',
 	10000,
 	-59,
 	89,
@@ -136,6 +230,89 @@ VALUES(
 	datetime('now')
 );
 
+INSERT INTO places (id, title, description, _price, _latitude, _longitude, owner_id, created_at)
+VALUES(
+	'461c8021-3920-4ef4-9002-5600a4bf2a9f',
+	'Small villa with character',
+	'The villa is located in Nice with a view of the beach',
+	300,
+	-10,
+	123.2,
+	'f3cba417-98d2-4c29-8eb3-7b8f9cb4e8d1',
+	datetime('now')
+);
+
+INSERT INTO places (id, title, description, _price, _latitude, _longitude, owner_id, created_at)
+VALUES(
+	'7ee30d8d-33f5-4ac2-b344-1daff39e46fa',
+	'Building with a view of a putrid swamp in Mordor',
+	'Apartment with a lovely view of a marsh inhabited by damned elf spirits',
+	50,
+	100,
+	-20,
+	'f30c0e51-36a8-4796-a3e7-108a2bd72504',
+	datetime('now')
+);
+
+INSERT INTO places (id, title, description, _price, _latitude, _longitude, owner_id, created_at)
+VALUES(
+	'ce3b57ca-fc49-4cec-b21c-f3daf5280b9e',
+	'The pit to the madwomen',
+	'A place where you often have to look behind you',
+	125.99,
+	0.21,
+	6.21,
+	'f3cba417-98d2-4c29-8eb3-7b8f9cb4e8d1',
+	datetime('now')
+);
+
+INSERT INTO places (id, title, description, _price, _latitude, _longitude, owner_id, created_at)
+VALUES(
+	'a1780f45-7d32-417e-a536-337f37de5424',
+	'The house with eyes',
+	'House with special neighbours',
+	15,
+	66,
+	6.6,
+	'96c6cf13-0f8a-4b7d-a283-d453fe7922a0',
+	datetime('now')
+);
+
+INSERT INTO places (id, title, description, _price, _latitude, _longitude, owner_id, created_at)
+VALUES(
+	'17bc2dbc-6b4d-4d2c-a7b3-8cd5ceff774d',
+	'Dungeon of the Three mosquito nets',
+	'An ancestral place renovated by three nobles for history lovers and quest seekers',
+	69,
+	85,
+	45,
+	'f30c0e51-36a8-4796-a3e7-108a2bd72504',
+	datetime('now')
+);
+
+INSERT INTO places (id, title, description, _price, _latitude, _longitude, owner_id, created_at)
+VALUES(
+	'15ed065a-a0a6-4335-98ec-828643bb1def',
+	'Mage tower',
+	'It is said to be cursed and breed monsters',
+	6.50,
+	-56,
+	-41,
+	'a3f82e18-4b94-4ed6-b7c6-8a35f3edbb01',
+	datetime('now')
+);
+
+INSERT INTO places (id, title, description, _price, _latitude, _longitude, owner_id, created_at)
+VALUES(
+	'b22e9936-2f7c-4516-9a71-f588acc5c582',
+	'Appartment in the megabuilding',
+	'It is located on the 8th floor of the H10 megabuilding, located in Little China, a sub-district of Watson in Night City.',
+	750,
+	-10,
+	25,
+	'f3cba417-98d2-4c29-8eb3-7b8f9cb4e8d1',
+	datetime('now')
+);
 
 -- INSERT for reviews Table
 INSERT INTO reviews (id, text, rating, user_id, place_id, created_at)
@@ -168,6 +345,15 @@ VALUES(
 	datetime('now')
 );
 
+INSERT INTO reviews (id, text, rating, user_id, place_id, created_at)
+VALUES(
+	'81f9db75-75b1-437a-b661-4aa50ca9546f',
+	"Nice view of Nightcity",
+	4,
+	'f30c0e51-36a8-4796-a3e7-108a2bd72504',
+	'b22e9936-2f7c-4516-9a71-f588acc5c582',
+	datetime('now')
+);
 
 -- Select for some tables
 SELECT * FROM users;
@@ -184,7 +370,7 @@ SET first_name = 'Isildur',
 WHERE last_name = 'holberton';
 
 UPDATE places
-SET description = 'Les travaux sont terminés',
+SET description = 'The work is complete',
 	updated_at = CURRENT_TIMESTAMP
 WHERE title = 'Gouffre de Helm';
 
