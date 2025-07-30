@@ -27,6 +27,8 @@ function getPlaceIdFromURL() {
 // Vérifier l'authentification de l'utilisateur (coté place)
 // -----------------------------------------------------------
 
+let placeDetailsAlreadyFetched = false;
+
 function checkAuthentication() {
     const token = getCookie('token');
     const addReviewSection = document.getElementById('add-review');
@@ -37,7 +39,12 @@ function checkAuthentication() {
         // Utilisateur connecté : afficher le formulaire + cacher "login"
         if (addReviewSection) addReviewSection.style.display = 'block';
         if (loginLink) loginLink.style.display = 'none';
-        fetchPlaceDetails(token, placeId);
+
+        // Évite les appels multiples
+        if (!placeDetailsAlreadyFetched) {
+            fetchPlaceDetails(token, placeId);
+            placeDetailsAlreadyFetched = true;
+        }
     } else {
         // Utilisateur non connecté : cacher le formulaire + afficher "login"
         if (addReviewSection) addReviewSection.style.display = 'none';
@@ -171,19 +178,13 @@ function displayPlaceDetails(place,) {
 
     if (Array.isArray(place.reviews) && place.reviews.length > 0) {
       place.reviews.forEach(review => {
+        console.log('Review complète :', review);
         const reviewCard = document.createElement('div');
         reviewCard.className = 'review-card';
 
         // Texte de la review
         const reviewText = document.createElement('p');
         reviewText.textContent = review.text;
-
-        // Auteur de la review
-        if (review.user) {
-          const reviewAuthor = document.createElement('p');
-          reviewAuthor.textContent = `${user.first_name} ${user.last_name}`;
-          reviewCard.appendChild(reviewAuthor);
-        }
 
         // Note / étoiles (supposons qu'on ait un champ rating de 1 à 5)
         const reviewRating = document.createElement('p');
