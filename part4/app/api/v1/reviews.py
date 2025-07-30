@@ -91,7 +91,8 @@ class ReviewList(Resource):
         review_data = api.payload
 
         # Extraction des champs 'user_id' et 'place_id' des données de la review car ils seront utilisés
-        user_id = get_jwt_identity()["id"]
+        user_identity = get_jwt_identity()
+        user_id = user_identity.get("id") # on récupère l'utilisateur connecté depuis le token
         place_id = review_data.get('place_id')
 
         # présence de l'id du lieu et de l'utilisateur obligatoire
@@ -121,6 +122,12 @@ class ReviewList(Resource):
             if rev.user and str(rev.user.id) == str(user_id):
                 return {'error': 'You have already reviewed this place'}, 400
         # Si tout est bon, crée une nouvelle review avec les données fournies
+
+ # Injecte l'user_id dans les données de review avant de créer
+        review_data['user_id'] = user_id # Injection du user_id côté serveur
+# L'user_id doit correspondre au token suivant la ligne 94 et 95 etensuite je
+# l'injecter dans ma base de donnée
+
         try:
             new_review = facade.create_review(review_data)
         except ValueError as error:
