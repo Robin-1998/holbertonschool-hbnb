@@ -209,16 +209,17 @@ erDiagram
 ## Simple Web Client
 
 ### 1. User login through login.html for a user registered in the database
-<img src="base_files/images/login_exemple.png" alt="Presentation of login.html" width="300"/>
-![Presentation of login.html](base_files/images/login_exemple.png)
+<img src="base_files/images/login_exemple.png" alt="Presentation of login.html" width="500"/>
 
 On the login.html page, we use an email address and password from the database to log in and be redirected to the main page: index.html. if the connexion success, the nav with the text "login" disappear in all pages.
 
 ### 2. Presentation of all known locations in the database
+<img src="base_files/images/index_exemple.png" alt="Presentation of index.html" width="500"/>
 
 On the index.html page, if the user is logged in, they will be able to see the list of locations stored in the database with the option to view details via the buttons on each map. If the user is not logged in, they will not see any locations displayed. There is also the option to choose a maximum price based on values between 10, 50, 100, or to display the entire range (which is the default setting).
 
 ### 3. Details of a place and and there is the possibility to view and add a review
+<img src="base_files/images/place_exemple.png" alt="Presentation of place.html" width="500"/>
 
 On the place.html, if the user requests details about one of the different locations, they will be taken to this page where they will see complete information about the location. They will then be able to see each review that another user has given and can also add one (note that they can only post one review and that the owner of the location cannot leave a review).
 
