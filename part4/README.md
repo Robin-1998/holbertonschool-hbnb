@@ -1,26 +1,30 @@
-# Welcome to the HBNB - Enhanced Backend with Authentication and Database Integration
+# Welcome to the HBNB Project - A simplified version of an AirBnB-like application
 
 ## Presentation
 
-HBnB is a RESTful API inspired by the AirBnB website, developed in Python using Flask and Flask-RESTX.  
-The project follows a three-layer architecture (presentation, business logic, persistence) introduced in Part 1 of the HBnB project.
+HBnB is a RESTful API inspired by the AirBnB website, developed in Python using Flask / Flask-RESTX and sqlalchemy.
+
+The project was carried out in four parts.
+	- The first involved creating graphics
+	- The second implementing logic with API endpoints
+	- The third user authentication and database integration
+	- The fourth and final part involved using the front end for the aesthetic and dynamic aspects of the website (HTML, CSS, JavaScript) and also enabling communication between the back end and the front end.
 
 ## Project Objectives
 
-🔐 Authentication & Authorization:
-Implement JWT-based authentication using Flask-JWT-Extended and role-based access control through the is_admin attribute.
+📋 Part1 -> HBnB - UML
+The project follows a three-layer architecture (presentation, business logic, persistence) introduced in Part 1 of the HBnB project.
 
-🗃️ Persistent Data Storage:
-Replace in-memory storage with SQLite for development, and prepare MySQL integration for production environments using SQLAlchemy as the ORM.
+📚 Part2 -> HBnB - BL and API
+The objective of this phase is to build the presentation and business logic layers of the application using Python and Flask. Basic features such as classes, methods, and the necessary endpoints have been implemented.
+Subsequently, the API structure (user management, locations, reviews, and amenities) was implemented using Flask and flask-restx, following API design best practices.
 
-⚙️ Database-Backed CRUD Operations:
-Refactor all Create, Read, Update, and Delete operations to interact with a relational database.
+📬 Part3 -> HBnB - Auth & D
+In this section, we will extend the HBnB project backend by adding user authentication, authorisation (access management), and database integration with SQLAlchemy and SQLite (for development). MySQL will be used in production. This step aims to secure the application, ensure data persistence, and prepare the backend for scalable and realistic deployment.
 
-🧭 Database Modeling and Visualization:
-Design the relational schema and visualize entity relationships (User, Place, Review, Amenity) using Mermaid.js.
+📰	Part4 -> HBnB - Simple Web Client
+For this last phase, we will focus on the front-end using HTML, CSS3, and JavaScript ES6. The objective is to implement an interactive user interface that connects to the back-end service created in the previous sections.
 
-✅ Data Validation & Consistency:
-Enforce data validation and integrity constraints within the SQLAlchemy models.
 
 ## Technology Stack
 
@@ -30,6 +34,11 @@ SQLAlchemy – ORM for database modeling
 SQLite – Development database
 MySQL – Target production database
 Mermaid.js – ER diagram visualization tool
+email_validator - good email format validation
+flask-bcrypt - password hashing
+flask_sqlalchemy - SQLAlchemy integration for Flask 
+PyJWT - JSON Web Token implementation 
+flask-cors - Handling Cross-Origin Resource Sharing (CORS) in Flask 
 
 ## Key Deliverables
 
@@ -37,6 +46,7 @@ A secure and scalable backend API with authentication and authorization.
 A fully connected relational database schema using SQLAlchemy models.
 Visualized database architecture with Mermaid.js diagrams.
 Clear separation of concerns across routes, models, and controllers.
+Visual presentation of the front end
 
 ## How to Run the Application
 
@@ -229,5 +239,5 @@ All our tests were performed using Postman and Swagger, covering all CRUD operat
 
 ## Author
 
-👩‍💻 Robin David
+👩‍💻 Robin David and Thérèse-Marie LEFOULON
 🚀 Full-Stack Web Developer in training at Holberton School Laval — project-based and peer-learning curriculum
