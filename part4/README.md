@@ -5,10 +5,10 @@
 HBnB is a RESTful API inspired by the AirBnB website, developed in Python using Flask / Flask-RESTX and sqlalchemy.
 
 The project was carried out in four parts.
-	- The first involved creating graphics
-	- The second implementing logic with API endpoints
-	- The third user authentication and database integration
-	- The fourth and final part involved using the front end for the aesthetic and dynamic aspects of the website (HTML, CSS, JavaScript) and also enabling communication between the back end and the front end.
+- The first involved creating graphics
+- The second implementing logic with API endpoints
+- The third user authentication and database integration
+- The fourth and final part involved using the front end for the aesthetic and dynamic aspects of the website (HTML, CSS, JavaScript) and alsoenabling communication between the back end and the front end.
 
 ## Project Objectives
 
@@ -42,11 +42,11 @@ flask-cors - Handling Cross-Origin Resource Sharing (CORS) in Flask
 
 ## Key Deliverables
 
-A secure and scalable backend API with authentication and authorization.
-A fully connected relational database schema using SQLAlchemy models.
-Visualized database architecture with Mermaid.js diagrams.
-Clear separation of concerns across routes, models, and controllers.
-Visual presentation of the front end
+A secure and scalable backend API with authentication and authorization.  
+A fully connected relational database schema using SQLAlchemy models.  
+Visualized database architecture with Mermaid.js diagrams.  
+Clear separation of concerns across routes, models, and controllers.  
+Visual presentation of the front end  
 
 ## How to Run the Application
 
@@ -119,101 +119,101 @@ Passwords securely hashed using bcrypt.
 
 ```mermaid
 erDiagram
-    USERS {
-        %% PK Primary Key
-        CHAR(36) id PK
-        VARCHAR first_name
-        VARCHAR last_name
-        VARCHAR email
-        VARCHAR password
-        BOOLEAN is_admin
-    }
-    PLACES {
-        CHAR(36) id PK
-        VARCHAR title
-        TEXT description
-        DECIMAL price
-        FLOAT latitude
-        FLOAT longitude
-        %% Foreign Key
-        CHAR(36) owner_id FK
-    }
-    REVIEWS {
-        CHAR(36) id PK
-        TEXT text
-        INT rating
-        CHAR(36) user_id FK
-        CHAR(36) place_id FK
-    }
-    AMENITIES {
-        CHAR(36) id PK
-        VARCHAR name
-    }
-    PLACE_AMENITY {
-        CHAR(36) place_id FK
-        CHAR(36) amenity_id FK
-    }
-    USERS ||--o{ PLACES : owns
-    USERS ||--o{ REVIEWS : writes
-    PLACES ||--o{ REVIEWS : receives
-    PLACES ||--o{ PLACE_AMENITY : has
-    %% Table d'association pour relation many-to-many entre Place et Amenity
-    AMENITIES ||--o{ PLACE_AMENITY : linked_to
+	USERS {
+		%% PK Primary Key
+		CHAR(36) id PK
+		VARCHAR first_name
+		VARCHAR last_name
+		VARCHAR email
+		VARCHAR password
+		BOOLEAN is_admin
+	}
+	PLACES {
+		CHAR(36) id PK
+		VARCHAR title
+		TEXT description
+		DECIMAL price
+		FLOAT latitude
+		FLOAT longitude
+		%% Foreign Key
+		CHAR(36) owner_id FK
+	}
+	REVIEWS {
+		CHAR(36) id PK
+		TEXT text
+		INT rating
+		CHAR(36) user_id FK
+		CHAR(36) place_id FK
+	}
+	AMENITIES {
+		CHAR(36) id PK
+		VARCHAR name
+	}
+	PLACE_AMENITY {
+		CHAR(36) place_id FK
+		CHAR(36) amenity_id FK
+	}
+	USERS ||--o{ PLACES : owns
+	USERS ||--o{ REVIEWS : writes
+	PLACES ||--o{ REVIEWS : receives
+	PLACES ||--o{ PLACE_AMENITY : has
+	%% Table d'association pour relation many-to-many entre Place et Amenity
+	AMENITIES ||--o{ PLACE_AMENITY : linked_to
 ```
 
 ## Database Diagram with USER_PLACE_RESERVATION Integration
 
 ```mermaid
 erDiagram
-    USERS {
-        %% PK Primary Key
-        CHAR(36) id PK
-        VARCHAR first_name
-        VARCHAR last_name
-        VARCHAR email
-        VARCHAR password
-        BOOLEAN is_admin
-    }
-    PLACES {
-        CHAR(36) id PK
-        VARCHAR title
-        TEXT description
-        DECIMAL price
-        FLOAT latitude
-        FLOAT longitude
-        %% Foreign Key
-        CHAR(36) owner_id FK
-    }
-    REVIEWS {
-        CHAR(36) id PK
-        TEXT text
-        INT rating
-        CHAR(36) user_id FK
-        CHAR(36) place_id FK
-    }
-    AMENITIES {
-        CHAR(36) id PK
-        VARCHAR name
-    }
-    PLACE_AMENITY {
-        CHAR(36) place_id FK
-        CHAR(36) amenity_id FK
-    }
-    USER_PLACE_RESERVATION {
-        CHAR(36) place_id FK
-        CHAR(36) user_id FK
-        DATE start_date
-        DATE end_date
-    }
-    USERS ||--o{ PLACES : owns
-    USERS ||--o{ REVIEWS : writes
-    PLACES ||--o{ REVIEWS : receives
-    PLACES ||--o{ PLACE_AMENITY : has
-    %% Table d'association pour relation many-to-many entre Place et Amenity
-    AMENITIES ||--o{ PLACE_AMENITY : linked_to
-    %% Table d'association pour relation many-to-many entre User et Place
-    PLACES ||--o{ USER_PLACE_RESERVATION : booked_for
-    USERS ||--o{ USER_PLACE_RESERVATION : makes
+	USERS {
+		%% PK Primary Key
+		CHAR(36) id PK
+		VARCHAR first_name
+		VARCHAR last_name
+		VARCHAR email
+		VARCHAR password
+		BOOLEAN is_admin
+	}
+	PLACES {
+		CHAR(36) id PK
+		VARCHAR title
+		TEXT description
+		DECIMAL price
+		FLOAT latitude
+		FLOAT longitude
+		%% Foreign Key
+		CHAR(36) owner_id FK
+	}
+	REVIEWS {
+		CHAR(36) id PK
+		TEXT text
+		INT rating
+		CHAR(36) user_id FK
+		CHAR(36) place_id FK
+	}
+	AMENITIES {
+		CHAR(36) id PK
+		VARCHAR name
+	}
+	PLACE_AMENITY {
+		CHAR(36) place_id FK
+		CHAR(36) amenity_id FK
+	}
+	USER_PLACE_RESERVATION {
+		CHAR(36) place_id FK
+		CHAR(36) user_id FK
+		DATE start_date
+		DATE end_date
+	}
+	USERS ||--o{ PLACES : owns
+	USERS ||--o{ REVIEWS : writes
+	PLACES ||--o{ REVIEWS : receives
+	PLACES ||--o{ PLACE_AMENITY : has
+	%% Table d'association pour relation many-to-many entre Place et Amenity
+	AMENITIES ||--o{ PLACE_AMENITY : linked_to
+	%% Table d'association pour relation many-to-many entre User et Place
+	PLACES ||--o{ USER_PLACE_RESERVATION : booked_for
+	USERS ||--o{ USER_PLACE_RESERVATION : makes
 ```
 
 ## Simple Web Client
