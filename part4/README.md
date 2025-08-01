@@ -239,5 +239,5 @@ All our tests were performed using Postman and Swagger, covering all CRUD operat
 
 ## Author
 
-👩‍💻 Robin David and Thérèse-Marie LEFOULON
+👩‍💻 Robin David and Thérèse-Marie LEFOULON  
 🚀 Full-Stack Web Developer in training at Holberton School Laval — project-based and peer-learning curriculum
