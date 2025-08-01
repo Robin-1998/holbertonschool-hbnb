@@ -28,17 +28,17 @@ For this last phase, we will focus on the front-end using HTML, CSS3, and JavaSc
 
 ## Technology Stack
 
-Flask – Web framework for API development
-Flask-JWT-Extended – JWT-based authentication
-SQLAlchemy – ORM for database modeling
-SQLite – Development database
-MySQL – Target production database
-Mermaid.js – ER diagram visualization tool
-email_validator - good email format validation
-flask-bcrypt - password hashing
-flask_sqlalchemy - SQLAlchemy integration for Flask 
-PyJWT - JSON Web Token implementation 
-flask-cors - Handling Cross-Origin Resource Sharing (CORS) in Flask 
+- Flask – Web framework for API development
+- Flask-JWT-Extended – JWT-based authentication
+- SQLAlchemy – ORM for database modeling
+- SQLite – Development database
+- MySQL – Target production database
+- Mermaid.js – ER diagram visualization tool
+- email_validator - good email format validation
+- flask-bcrypt - password hashing
+- flask_sqlalchemy - SQLAlchemy integration for Flask 
+- PyJWT - JSON Web Token implementation 
+- flask-cors - Handling Cross-Origin Resource Sharing (CORS) in Flask 
 
 ## Key Deliverables
 
