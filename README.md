@@ -95,7 +95,7 @@ Visual presentation of the front end
 
 ## Purpose of Each Directory and File
 
-![Structure du projet](structure.png)
+![Structure du projet](part4/structure.png)
 
 
 ## API Endpoints
